@@ -1,0 +1,131 @@
+.top_bar {
+    height: 60px;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.top_bar, .bottom_info {
+    background-color: rgb(0, 60, 121);
+    color: #AAB;
+}
+.top_bar div {
+    width: 45%;
+}
+.admin_login {
+    float: right;
+    text-align: right;
+}
+.blocks {
+    font-family: "Franklin Gothic Demi", Verdana, Helvetica, sans-serif;
+    font-size: 28px !important;
+}
+
+.blocks div {
+    margin: auto 0; 
+}
+.app_table {
+    display: block; 
+}
+body {
+    margin: 0px;
+}
+.bottom_info {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-family: "Franklin Gothic Demi", Verdana, Helvetica, sans-serif;
+    font-style: 14px;
+    font-weight: bold;
+    font-size: 0.5em;
+    padding: 1em 0;
+    display: block;
+}
+.bottom_info p {
+    padding: 0 1em;
+}
+.app_table button{
+    margin-left: 29px;
+}
+.login_form button{
+    margin-left: 154px;
+}
+.login_form label, .app_table label, .login_form button, .app_table button{
+    width: 250px;
+    display: inline-block;
+    font-size: 28px !important;
+}
+.app_table input, .app_table select, .login_form input{
+    width: 300px;
+    height: 2.5em;
+    font-style: 1.8em;
+    font-family: "Franklin Gothic Demi", Verdana, Helvetica, sans-serif;
+}
+.app_table input, .app_table select, .login_form input, .login_form label, .app_table label, .login_form button, .app_table button {
+    margin-top: 0.5em;
+}
+.login_form, .app_table {
+    padding-left: 2em;
+    padding-top: 2em;
+}
+a:link{
+    color: #AAB;
+}
+a:active{
+    color: #AAB;
+}
+a:visited{
+    color: #AAB;
+}
+a:hover{
+    color: #FF3300;
+}
+
+#mng{
+    margin-bottom: 40px;
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-top: 20px;
+}
+#db{
+    text-align: center;
+    border: 2px solid grey;
+    vertical-align: top;
+    font-family: Calibri, Helvetica, sans-serif;
+    border-collapse: collapse;
+}
+thead{
+    background-color: #e4e4ff;
+    border: 2px solid grey;
+}
+tbody{
+    background-color: #eeeeff;
+}
+td, th{
+    padding: 5px;
+    border: 2px solid grey;
+}
+.basic_info{
+    display: inline-block;
+    margin-top: 0.5em;
+    font-size: 1em;
+    padding: 0.5em;
+    border: 2px solid grey;
+}
+#time {
+    width: 100%;
+}
+#query{
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-top: 20px; 
+    text-align: center;
+    font-size: 20px;
+    font-family: "Franklin Gothic Demi", Verdana, Helvetica, sans-serif;
+}
+#query input, #query select{
+    margin-right: 50px;
+    width: 150px;
+    height: 30px;
+}
