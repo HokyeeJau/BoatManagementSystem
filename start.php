@@ -4,11 +4,8 @@
 	$admin = $_GET['admin'];
     $pwd = $_GET['pwd'];
 	// Connect with database
-	$link = new mysqli("your_host", 'user_name', 'user_pwd', 'db_name');
-	$link->set_charset("utf8");
-	if ($link->connect_error) {
-		die("Failed Connection!".$link->connect_error);
-	}
+	include "./conn_db.php";
+	$link = conn_db();
 
 	// Insert the start time
 	$insert = "update clients set start=NOW() where boat_id='$boat_id' and boat_type='$boat_type'";

@@ -2,25 +2,20 @@
 <html>
 <head>
 	<meta charset="utf-8">
+    <meta name="viewport" content="width=1024px">
 	<title>Docking Management System</title>
 	<link rel="stylesheet" href="./css/main.css">
     <script type="text/javascript" src="./js/main.js"></script>
 </head>
 
 <?php 
-// Set the timezone and connect to db
     date_default_timezone_set('PRC');
-    $link = new mysqli("your_host", 'user_name', 'user_pwd', 'db_name');
-    $link->set_charset("utf8");
-
-    if ($link->connect_error) {
-        die("Failed Connection!".$link->connect_error);
-    }
+    include "./conn_db.php";
+    $link = conn_db();
 
     $admin = $_GET['admin'];
     $pwd = $_GET['pwd'];
 
-// make sure it is logined by admin
     $sql = "select * from admins where name='$admin' and pwd='$pwd'";
     $res = $link->query($sql);
     $data = $res->fetch_all();
@@ -28,13 +23,12 @@
         header("location:./login.php");
     }
 
-// calculate the time difference 
     function time_diff($time_diff){
         $day = floor($time_diff/86400);
         $hour = floor($time_diff%86400/3600);
         $minute = floor($time_diff%86400%3600/60);
         $second = floor($time_diff%86400%60);
-        return $day."d ".$hour."h ".$minute."m ".$second."s";
+        return $hour.":".$minute.":".$second;
     }
 ?>
 
@@ -107,13 +101,14 @@
     	<table id="db">
     		<colgroup>
 				<col style="width :150px;">
-				<col style="width :200px;">
+				<col style="width :150px;">
 				<col style="width :100px;">
 				<col style="width :120px;">
 				<col style="width :240px;">
 				<col style="width :240px;">
 				<col style="width :100px;">
                 <col style="width :180px;">
+                <col style="width :50px;">
 			</colgroup>
     		<thead>
     			<tr>
@@ -124,7 +119,8 @@
     				<th>Start</th>
     				<th>End</th>
     				<th>Cancel</th>
-                    <th>Time Difference</th>
+                    <th>Duration</th>
+                    <th>Check</th>
     			</tr>
     		</thead>
     		<tbody>
@@ -161,7 +157,8 @@
 
         $data = $link->query($clients)->fetch_all();
 
-        foreach ($data as $client) {
+        for ($i = 0; $i < sizeof($data); $i++) {
+            $client = $data[$i];
             echo "<tr>";
             echo "<td>".$client[2]."</td>";
             echo "<td>".$client[0]."</td>";
@@ -211,6 +208,13 @@
                 $time_diff = strtotime($client[6]) - strtotime($client[5]);
             }
             echo "<td>".time_diff($time_diff)."</td>";
+            $check = rand(0, 100);
+            $idd = $i;
+            if ($check >= 20 || $client[6]) {
+                echo "<td id='check".$i."'><input value='Checked' readonly='readonly'/></td>";
+            } else {
+                echo "<td id='check".$i."'><input type='submit' name='check_exist' value='Inform' onclick=".'"check('.$idd.')"'."/></td>";
+            }
             echo "</tr>";
         }
 ?>
@@ -233,7 +237,6 @@
             $avg_diff = $avg_diff/count($diff_list);
         ?>
         <button type="button" name="refresh" onclick="refresh()" style="margin-top:0.5em;width: 100px; font-size:1em;padding:0.5em;display: inline-block;float: right;">Refresh</button>
-        <!-- Basic Information(Requirements) -->
         <div class="basic_info">Renting Number: <?php echo sizeof($data);?></div>
         <div class="basic_info">Average Renting Time: <?php echo time_diff($avg_diff); ?></div>
         <div class="basic_info">Longest Renting Time: <?php echo time_diff($max_diff); ?></div>

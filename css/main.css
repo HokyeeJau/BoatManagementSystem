@@ -30,6 +30,7 @@
 }
 body {
     margin: 0px;
+    min-width: 1200px;
 }
 .bottom_info {
     position: fixed;
@@ -69,6 +70,7 @@ body {
     padding-left: 2em;
     padding-top: 2em;
 }
+
 a:link{
     color: #AAB;
 }
@@ -83,7 +85,7 @@ a:hover{
 }
 
 #mng{
-    margin-bottom: 40px;
+    margin-bottom: 200px;
     margin-left: 40px;
     margin-right: 40px;
     margin-top: 20px;
@@ -117,6 +119,7 @@ td, th{
     width: 100%;
 }
 #query{
+    display: inline;
     margin-left: 40px;
     margin-right: 40px;
     margin-top: 20px; 
@@ -128,4 +131,56 @@ td, th{
     margin-right: 50px;
     width: 150px;
     height: 30px;
+}
+.rent_num {
+    padding-top: 20px;
+}
+.rent_num span{
+    font-size: 15px;
+    padding-left: 100px;
+}
+tr{
+    height: 40  px;
+}
+
+#client_page {
+    height: 500px;
+    margin: 20px;
+    border: 2px solid grey;
+    display: block;
+}
+#client_login {
+    font-size: 30px;
+    color: #AAB;
+    float: left;
+    margin:10px;
+    border: 1px solid grey;
+    padding: 10px;
+}
+#client_login label {
+    text-align: center;
+    width: 200px;
+    display: inline-table;
+}
+#client_login input {
+    text-align: center;
+    width: 40%;
+    font-size: 20px;
+}
+#client_history {
+    width: 40%;
+    height: 400px;
+    margin:10px;
+    text-align: center;
+    border: 1px solid grey;
+    float: right;
+}
+.history_block {
+    height: 30px;
+    border: 1px solid grey;
+    justify-content: center;
+    vertical-align: center;
+    text-align: center;
+    margin:5px;
+    font-size: 20px;
 }
